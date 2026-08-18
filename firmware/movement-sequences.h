@@ -472,6 +472,7 @@ inline void runTouchTurnRight() {
 
 inline void runSupermanPose() {
   Serial.println(F("SUPERMAN"));
+  setFaceWithMode("point", FACE_ANIM_BOOMERANG);
   // Straight, extended limbs: confirmed against Sesame's angle guide.
   setServoAngle(R1, 180);
   setServoAngle(R2, 0);
@@ -506,17 +507,17 @@ inline void runWalkPose() {
   for (int i = 0; i < walkCycles; i++) {
     setServoAngle(R3, 135); setServoAngle(L3, 0);
     if (!pressingCheck("forward", frameDelay)) return;
-    setServoAngle(L4, 135); setServoAngle(L2, 90);
-    setServoAngle(R4, 0); setServoAngle(R1, 170);
+    setServoAngle(L4, 145); setServoAngle(L2, 90);
+    setServoAngle(R4, 0); setServoAngle(R1, 160);
     if (!pressingCheck("forward", frameDelay)) return;    
     setServoAngle(R2, 45); setServoAngle(L1, 90);
     if (!pressingCheck("forward", frameDelay)) return;
-    setServoAngle(R4, 45); setServoAngle(L4, 170);
+    setServoAngle(R4, 30); setServoAngle(L4, 160);
     if (!pressingCheck("forward", frameDelay)) return;
-    setServoAngle(R3, 170); setServoAngle(L3, 45);
+    setServoAngle(R3, 180); setServoAngle(L3, 45);
     setServoAngle(R2, 90); setServoAngle(L1, 0);
     if (!pressingCheck("forward", frameDelay)) return;  
-    setServoAngle(L2, 125); setServoAngle(R1, 90);
+    setServoAngle(L2, 135); setServoAngle(R1, 90);
     if (!pressingCheck("forward", frameDelay)) return;
   }
   runStandPose(1);
@@ -527,29 +528,21 @@ inline void runWalkBackward() {
   Serial.println(F("WALK BACK"));
   setFaceWithMode("walk", FACE_ANIM_ONCE);
   if (!pressingCheck("backward", frameDelay)) return;
-
+  
   for (int i = 0; i < walkCycles; i++) {
-    setServoAngle(R3, 135);
-    setServoAngle(L3, 0);
+    setServoAngle(R3, 135); setServoAngle(L3, 0);
     if (!pressingCheck("backward", frameDelay)) return;
-    setServoAngle(L4, 135);
-    setServoAngle(L2, 135);
-    setServoAngle(R4, 0);
-    setServoAngle(R1, 90);
+    setServoAngle(L4, 145); setServoAngle(L2, 135);
+    setServoAngle(R4, 0); setServoAngle(R1, 90);
+    if (!pressingCheck("backward", frameDelay)) return;    
+    setServoAngle(R2, 90); setServoAngle(L1, 0);
     if (!pressingCheck("backward", frameDelay)) return;
-    setServoAngle(R2, 90);
-    setServoAngle(L1, 0);
+    setServoAngle(R4, 30); setServoAngle(L4, 160);
     if (!pressingCheck("backward", frameDelay)) return;
-    setServoAngle(R4, 45);
-    setServoAngle(L4, 180);
-    if (!pressingCheck("backward", frameDelay)) return;
-    setServoAngle(R3, 180);
-    setServoAngle(L3, 45);
-    setServoAngle(R2, 45);
-    setServoAngle(L1, 90);
-    if (!pressingCheck("backward", frameDelay)) return;
-    setServoAngle(L2, 90);
-    setServoAngle(R1, 180);
+    setServoAngle(R3, 180); setServoAngle(L3, 45);
+    setServoAngle(R2, 45); setServoAngle(L1, 90);
+    if (!pressingCheck("backward", frameDelay)) return;  
+    setServoAngle(L2, 90); setServoAngle(R1, 160);
     if (!pressingCheck("backward", frameDelay)) return;
   }
   runStandPose(1);
